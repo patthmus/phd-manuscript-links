@@ -1,0 +1,30 @@
+
+    body {
+      font-family: sans-serif;
+      margin: 20px;
+    }
+
+    .container {
+      display: flex;
+      gap: 40px; /* espace entre les colonnes */
+    }
+
+    .column {
+      flex: 1; /* chaque colonne prend la moitié de l'espace */
+    }
+
+    .player-button {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .video-wrapper > div {
+      margin-bottom: 20px; /* espace entre les vidéos si nécessaire */
+    }

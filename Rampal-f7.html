@@ -2,83 +2,50 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Fantasia TWV40.08 - Rampal</title>
-  <style>
-    body {
-      font-family: sans-serif;
-      margin: 2em;
-    }
-
-    .container {
-      display: flex;
-      align-items: flex-start;
-    }
-
-    .player-button {
-      width: 150px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-right: 2%;
-    }
-
-    .player-button button {
-      padding: 0.5em 1em;
-      font-size: 1em;
-      cursor: pointer;
-    }
-
-    .score {
-      flex-grow: 1;
-    }
-
-    .score iframe {
-      width: 100%;
-      max-width: 800px;
-      height: 315px;
-      border: none;
-    }
-  </style>
+  <title>Fantasia TWV40.08, mm 89-95</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-<h1>Fantasia TWV40.08, mm 89–95</h1>
-
 <div class="container">
-  <!-- Colonne bouton pour la vidéo -->
-  <div class="player-button">
-    <button onclick="playVideo()">▶ Écouter Rampal</button>
+
+  <!-- Colonne des boutons -->
+  <div class="column player-button">
+    <button onclick="playVideo(1)">▶ Learn Rampal performance</button>
+    <button onclick="playVideo(2)">▶ Learn Leleux performance</button>
   </div>
 
-  <!-- Colonne score + lecteur -->
-  <div class="score">
-    <!-- Ici, tu peux mettre une image ou PDF embed pour le score -->
-    <p><em>Partition Fantasia affichée ici</em></p>
-    <div id="player"></div>
+  <!-- Colonne des vidéos -->
+  <div class="column video-wrapper">
+    <div id="player1"></div>
+    <div id="player2"></div>
   </div>
+
 </div>
 
-<!-- YouTube IFrame API -->
 <script src="https://www.youtube.com/iframe_api"></script>
 <script>
-  var player;
-  const rampalVideo = {id: '3-H0vnusYng', start: 149, end: 165};
+  let player1, player2;
+  const videos = [
+    {id: '3-H0vnusYng', start: 149, end: 165},  // Rampal
+    {id: '3-H0vnusYng', start: 184, end: 209}   // Leleux
+  ];
 
   function onYouTubeIframeAPIReady() {
-    player = new YT.Player('player', {
-      height: '315',
-      width: '560',
-      videoId: '', // Vidéo chargée à la demande
-      playerVars: { autoplay: 0, controls: 1 }
-    });
+    player1 = new YT.Player('player1', { height: '315', width: '560', videoId: '', playerVars: { autoplay: 0, controls: 1 } });
+    player2 = new YT.Player('player2', { height: '315', width: '560', videoId: '', playerVars: { autoplay: 0, controls: 1 } });
   }
 
-  function playVideo() {
-    player.loadVideoById({
-      videoId: rampalVideo.id,
-      startSeconds: rampalVideo.start,
-      endSeconds: rampalVideo.end
-    });
+  function playVideo(num) {
+    let player = num === 1 ? player1 : player2;
+    let video = videos[num - 1];
+    if(player && player.loadVideoById) {
+      player.loadVideoById({
+        videoId: video.id,
+        startSeconds: video.start,
+        endSeconds: video.end
+      });
+    }
   }
 </script>
 
