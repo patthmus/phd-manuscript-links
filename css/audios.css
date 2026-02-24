@@ -124,7 +124,24 @@ header p {
   background: #020617;
   aspect-ratio: 16 / 9;
 }
+.video.hidden {
+  opacity: 0;
+  transform: scale(0.96);
+  pointer-events: none;
+  height: 0;
+  padding: 0;
+  margin: 0;
+}
 
+.video {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.video.active {
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: auto;
+}
 /* ---- RESPONSIVE ---- */
 
 @media (max-width: 1000px) {

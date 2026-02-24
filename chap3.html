@@ -32,8 +32,8 @@
     </section>
 
     <section class="viewer">
-      <div id="player1"></div>
-      <div id="player2"></div>
+      <div id="player1" class="video hidden"></div>
+      <div id="player2" class="video hidden"></div>
     </section>
 
   </main>
@@ -51,18 +51,23 @@
     player1 = new YT.Player('player1', { height: '315', width: '400', videoId: '', playerVars: { autoplay: 0, controls: 1 } });
     player2 = new YT.Player('player2', { height: '315', width: '400', videoId: '', playerVars: { autoplay: 0, controls: 1 } });
   }
-
+  
   function playVideo(num) {
-    let player = num === 1 ? player1 : player2;
-    let video = videos[num - 1];
-    if(player && player.loadVideoById) {
-      player.loadVideoById({
-        videoId: video.id,
-        startSeconds: video.start,
-        endSeconds: video.end
-      });
-    }
+  let player = num === 1 ? player1 : player2;
+  let video = videos[num - 1];
+  let div = document.getElementById(`player${num}`);
+
+  if (player && player.loadVideoById) {
+    player.loadVideoById({
+      videoId: video.id,
+      startSeconds: video.start,
+      endSeconds: video.end
+    });
+
+    div.classList.remove("hidden");
+    div.classList.add("active");
   }
+}
 </script>
 
 </body>
