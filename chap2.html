@@ -2,26 +2,39 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Fantasia TWV40.08, mm 89-95</title>
-  <link rel="stylesheet" href="css/style.css">
+  <title>Fantasia TWV40.08 - G.P Telemann, mm 89-95</title>
+  <link rel="stylesheet" href="css/audios.css">
 </head>
 <body>
 
-<div class="container">
+   <header>
+    <h1>Fantasia TWV40.08 - Georg Philipp Telemann</h1>
+    <p>Performances comparison, mm 89-95</p>
+  </header>
 
-  <!-- Colonne des boutons -->
-  <div class="column player-button">
-    <button onclick="playVideo(1)">▶ Learn Rampal performance</button>
-    <button onclick="playVideo(2)">▶ Learn Leleux performance</button>
-  </div>
+ <main class="player-grid">
 
-  <!-- Colonne des vidéos -->
-  <div class="column video-wrapper">
-    <div id="player1"></div>
-    <div id="player2"></div>
-  </div>
+    <section class="controls">
+      <h2>Choose a performance
+      </h2>
 
-</div>
+      <button onclick="playVideo(1)" class="play">
+        <span class="artist">Jean-Pierre Rampal</span>
+        <span class="meta">modern Flute</span>
+      </button>
+
+      <button onclick="playVideo(2)" class="play">
+        <span class="artist">François Leleux</span>
+        <span class="meta">Oboe</span>
+      </button>
+    </section>
+
+    <section class="viewer">
+      <div id="player1"></div>
+      <div id="player2"></div>
+    </section>
+
+  </main>
 
 <script src="https://www.youtube.com/iframe_api"></script>
 <script>
