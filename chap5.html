@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Chapter5: Vermont Counterpoint</title>
+  <link rel="stylesheet" href="css/audios.css">
+</head>
+<body>
+
+<div class="app">
+
+  <header>
+    <h1>Vermont Counterpoint — Steve Reich</h1>
+  </header>
+
+  <main class="player-grid">
+
+    <section class="controls">
+      <button onclick="playVideo(1)" class="play">
+        <span class="artist">Joe Larroca</span>
+        <span class="meta">Flutes (flute, alto, piccolo) and tape</span>
+      </button>
+    </section>
+
+    <section class="viewer">
+      <div id="player1" class="video hidden"></div>
+    </section>
+
+  </main>
+
+</div>
+<script src="https://www.youtube.com/iframe_api"></script>
+<script>
+  let player1;
+  const videos = [
+    {id: 'bMPsj2xsMLo', start: 0, end: 567}, 
+  ];
+
+  function onYouTubeIframeAPIReady() {
+    player1 = new YT.Player('player1', { height: '315', width: '400', videoId: '', playerVars: { autoplay: 0, controls: 1 } });
+  }
+  
+  function playVideo(num) {
+  let player = num === 1 ? player1 : player1;
+  let video = videos[num - 1];
+  let div = document.getElementById(`player${num}`);
+
+  if (player && player.loadVideoById) {
+    player.loadVideoById({
+      videoId: video.id,
+      startSeconds: video.start,
+      endSeconds: video.end
+    });
+
+    div.classList.remove("hidden");
+    div.classList.add("active");
+  }
+}
+</script>
+
+</body>
+</html>
