@@ -1,6 +1,4 @@
-# 🎼 Score-to-Audio Alignment for Solo Woodwind Instrument Recordings
-
-📦 Git repository accompanying submission 277
+# 📦 Material for Section 5.2 (Comparison of Audio Features in Score-to-Audio Alignment)
 
 ## 📊 Data
 
